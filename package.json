@@ -1,0 +1,64 @@
+{
+  "name": "egg-http-proxy",
+  "version": "0.1.0",
+  "description": "proxy middleware plugin for egg",
+  "eggPlugin": {
+    "name": "httpProxy"
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin",
+    "proxy",
+    "http-proxy",
+    "http-proxy-middleware"
+  ],
+  "dependencies": {
+    "egg-path-matching": "^1.0.1",
+    "http-proxy-middleware": "^0.18.0",
+    "koa2-connect": "^1.0.2",
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {
+    "autod": "^3.0.0",
+    "autod-egg": "^1.0.0",
+    "egg": "^2.0.0",
+    "egg-bin": "^4.3.0",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^5.1.0",
+    "express": "^4.16.3",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
+    "pkgfiles": "egg-bin pkgfiles",
+    "autod": "autod"
+  },
+  "files": [
+    "app",
+    "config",
+    "app.js"
+  ],
+  "ci": {
+    "version": "8, 9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunkai1312/egg-http-proxy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chunkai1312/egg-http-proxy/issues"
+  },
+  "homepage": "https://github.com/chunkai1312/egg-http-proxy#readme",
+  "author": "Chun-Kai Wang <chunkai1312@gmail.com>",
+  "license": "MIT"
+}
