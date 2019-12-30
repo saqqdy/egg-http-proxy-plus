@@ -12,11 +12,15 @@ module.exports = {
     'egg',
     'egg-ci',
     'egg-bin',
+    'egg-path-matching',
     'autod',
     'autod-egg',
     'eslint',
     'eslint-config-egg',
-    'webstorm-disable-index',
+    'http-proxy-middleware',
+    'koa2-connect',
+    'lodash',
+    'webstorm-disable-index'
   ],
   exclude: [
     './test/fixtures',
