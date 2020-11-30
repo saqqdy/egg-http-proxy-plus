@@ -1,4 +1,6 @@
-# egg-http-proxy
+# egg-http-proxy-plus
+fork from egg-http-proxy
+
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
@@ -7,34 +9,34 @@
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/egg-http-proxy.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-http-proxy
-[travis-image]: https://img.shields.io/travis/chunkai1312/egg-http-proxy.svg?style=flat-square
-[travis-url]: https://travis-ci.org/chunkai1312/egg-http-proxy
-[codecov-image]: https://img.shields.io/codecov/c/github/chunkai1312/egg-http-proxy.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/chunkai1312/egg-http-proxy?branch=master
-[david-image]: https://img.shields.io/david/chunkai1312/egg-http-proxy.svg?style=flat-square
-[david-url]: https://david-dm.org/chunkai1312/egg-http-proxy
-[snyk-image]: https://snyk.io/test/npm/egg-http-proxy/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-http-proxy
-[download-image]: https://img.shields.io/npm/dm/egg-http-proxy.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-http-proxy
+[npm-image]: https://img.shields.io/npm/v/egg-http-proxy-plus.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/egg-http-proxy-plus
+[travis-image]: https://img.shields.io/travis/saqqdy/egg-http-proxy-plus.svg?style=flat-square
+[travis-url]: https://travis-ci.org/saqqdy/egg-http-proxy-plus
+[codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/egg-http-proxy-plus.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/saqqdy/egg-http-proxy-plus?branch=master
+[david-image]: https://img.shields.io/david/saqqdy/egg-http-proxy-plus.svg?style=flat-square
+[david-url]: https://david-dm.org/saqqdy/egg-http-proxy-plus
+[snyk-image]: https://snyk.io/test/npm/egg-http-proxy-plus/badge.svg?style=flat-square
+[snyk-url]: https://snyk.io/test/npm/egg-http-proxy-plus
+[download-image]: https://img.shields.io/npm/dm/egg-http-proxy-plus.svg?style=flat-square
+[download-url]: https://npmjs.org/package/egg-http-proxy-plus
 
 Configure proxy middleware for egg. Use [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware).
 
 ## Install
 
 ```bash
-$ npm i egg-http-proxy --save
+$ npm i egg-http-proxy-plus --save
 ```
 
 ## Usage
 
 ```js
 // {app_root}/config/plugin.js
-exports.httpProxy = {
+exports.httpProxyPlus = {
   enable: true,
-  package: 'egg-http-proxy',
+  package: 'egg-http-proxy-plus',
 };
 ```
 
@@ -44,7 +46,7 @@ Proxy `/api` requests to `http://www.example.org`:
 
 ```js
 // {app_root}/config/config.default.js
-exports.httpProxy = {
+exports.httpProxyPlus = {
   '/api': 'http://www.example.org'
 };
 ```
@@ -55,7 +57,7 @@ If you don't want `/api` to be passed along, we need to rewrite the path:
 
 ```js
 // {app_root}/config/config.default.js
-exports.httpProxy = {
+exports.httpProxyPlus = {
   '/api': {
     target: 'http://www.example.org',
     pathRewrite: {'^/api' : ''}
@@ -67,7 +69,7 @@ For more advanced usages, checkout [http-proxy-middleware](https://github.com/ch
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/chunkai1312/egg-http-proxy/issues).
+Please open an issue [here](https://github.com/saqqdy/egg-http-proxy-plus/issues).
 
 ## License
 

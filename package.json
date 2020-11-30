@@ -1,9 +1,9 @@
 {
-  "name": "egg-http-proxy",
-  "version": "1.0.1",
-  "description": "proxy middleware plugin for egg",
+  "name": "egg-http-proxy-plus",
+  "version": "1.0.0",
+  "description": "powerfull proxy middleware plugin for egg",
   "eggPlugin": {
-    "name": "httpProxy"
+    "name": "httpProxyPlus"
   },
   "keywords": [
     "egg",
@@ -11,24 +11,25 @@
     "egg-plugin",
     "proxy",
     "http-proxy",
+    "http-proxy-plus",
     "http-proxy-middleware"
   ],
   "dependencies": {
     "egg-path-matching": "^1.0.1",
-    "http-proxy-middleware": "^0.20.0",
+    "http-proxy-middleware": "^1.0.6",
     "koa2-connect": "^1.0.2",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "autod": "^3.1.0",
+    "autod": "^3.1.1",
     "autod-egg": "^1.1.0",
-    "egg": "^2.26.0",
-    "egg-bin": "^4.14.0",
-    "egg-ci": "^1.13.1",
-    "egg-mock": "^3.25.0",
+    "egg": "^2.29.1",
+    "egg-bin": "^4.15.0",
+    "egg-ci": "^1.18.0",
+    "egg-mock": "^4.0.1",
     "egg-path-matching": "^1.0.1",
-    "eslint": "^6.8.0",
-    "eslint-config-egg": "^8.0.0",
+    "eslint": "^7.14.0",
+    "eslint-config-egg": "^9.0.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^0.20.0",
     "koa2-connect": "^1.0.2",
@@ -58,12 +59,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chunkai1312/egg-http-proxy.git"
+    "url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
   },
   "bugs": {
-    "url": "https://github.com/chunkai1312/egg-http-proxy/issues"
+    "url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
   },
-  "homepage": "https://github.com/chunkai1312/egg-http-proxy#readme",
-  "author": "Chun-Kai Wang <chunkai1312@gmail.com>",
+  "homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
+  "author": "saqqdy <saqqdy@qq.com>",
   "license": "MIT"
 }

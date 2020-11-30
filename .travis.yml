@@ -1,9 +1,8 @@
-sudo: false
+
 language: node_js
 node_js:
-  - '13'
-  - '12'
-  - '10'
+  - '8'
+  - '9'
 before_install:
   - npm i npminstall -g
 install:
