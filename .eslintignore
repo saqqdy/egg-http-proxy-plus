@@ -1,1 +1,6 @@
-coverage
+/dist/
+/nuxt/
+/run/
+/logs/
+/test/
+

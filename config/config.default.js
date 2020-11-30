@@ -1,10 +1,6 @@
-'use strict';
-
 /**
  * egg-http-proxy-plus default config
- * @member Config#httpProxy
+ * @member Config#httpProxyPlus
  * @property {String} SOME_KEY - some description
  */
-exports.httpProxy = {
-
-};
+exports.httpProxyPlus = {}

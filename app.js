@@ -1,5 +1,5 @@
-'use strict';
+
 
 module.exports = app => {
-  app.config.coreMiddleware.unshift('httpProxy');
-};
+  app.config.coreMiddleware.unshift('httpProxyPlus')
+}

@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-const Controller = require('egg').Controller;
+const Controller = require('egg').Controller
 
 class HomeController extends Controller {
-  async index() {
-    this.ctx.body = 'hi, ' + this.app.plugins.httpProxy.name;
-  }
+	async index() {
+		this.ctx.body = 'hi, ' + this.app.plugins.httpProxyPlus.name
+	}
 }
 
-module.exports = HomeController;
+module.exports = HomeController

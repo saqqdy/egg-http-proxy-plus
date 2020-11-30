@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-const path = require('path');
+const path = require('path')
 
-exports.httpProxy = {
-  enable: true,
-  path: path.join(__dirname, '../../../../../'),
-};
+exports.httpProxyPlus = {
+	enable: true,
+	path: path.join(__dirname, '../../../../../')
+}

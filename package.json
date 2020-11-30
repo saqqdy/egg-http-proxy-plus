@@ -1,70 +1,71 @@
 {
-  "name": "egg-http-proxy-plus",
-  "version": "1.0.0",
-  "description": "powerfull proxy middleware plugin for egg",
-  "eggPlugin": {
-    "name": "httpProxyPlus"
-  },
-  "keywords": [
-    "egg",
-    "eggPlugin",
-    "egg-plugin",
-    "proxy",
-    "http-proxy",
-    "http-proxy-plus",
-    "http-proxy-middleware"
-  ],
-  "dependencies": {
-    "egg-path-matching": "^1.0.1",
-    "http-proxy-middleware": "^1.0.6",
-    "koa2-connect": "^1.0.2",
-    "lodash": "^4.17.20"
-  },
-  "devDependencies": {
-    "autod": "^3.1.1",
-    "autod-egg": "^1.1.0",
-    "egg": "^2.29.1",
-    "egg-bin": "^4.15.0",
-    "egg-ci": "^1.18.0",
-    "egg-mock": "^4.0.1",
-    "egg-path-matching": "^1.0.1",
-    "eslint": "^7.14.0",
-    "eslint-config-egg": "^9.0.0",
-    "express": "^4.17.1",
-    "http-proxy-middleware": "^0.20.0",
-    "koa2-connect": "^1.0.2",
-    "lodash": "^4.17.15",
-    "webstorm-disable-index": "^1.2.0"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "scripts": {
-    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
-    "pkgfiles": "egg-bin pkgfiles",
-    "autod": "autod"
-  },
-  "files": [
-    "app",
-    "config",
-    "app.js",
-    "index.d.ts"
-  ],
-  "ci": {
-    "version": "8, 9"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
-  },
-  "bugs": {
-    "url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
-  },
-  "homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
-  "author": "saqqdy <saqqdy@qq.com>",
-  "license": "MIT"
+	"name": "egg-http-proxy-plus",
+	"version": "1.0.0",
+	"description": "powerfull proxy middleware plugin for egg",
+	"eggPlugin": {
+		"name": "httpProxyPlus"
+	},
+	"keywords": [
+		"egg",
+		"eggPlugin",
+		"egg-plugin",
+		"proxy",
+		"http-proxy",
+		"http-proxy-plus",
+		"http-proxy-middleware"
+	],
+	"dependencies": {
+		"egg-path-matching": "^1.0.1",
+		"http-proxy-middleware": "^1.0.6",
+		"koa2-connect": "^1.0.2",
+		"lodash": "^4.17.20"
+	},
+	"devDependencies": {
+		"autod": "^3.1.1",
+		"autod-egg": "^1.1.0",
+		"egg": "^2.29.1",
+		"egg-bin": "^4.15.0",
+		"egg-ci": "^1.18.0",
+		"egg-mock": "^4.0.1",
+		"egg-path-matching": "^1.0.1",
+		"eslint": "^7.14.0",
+		"eslint-config-egg": "^9.0.0",
+		"express": "^4.17.1",
+		"http-proxy-middleware": "^0.20.0",
+		"koa2-connect": "^1.0.2",
+		"lodash": "^4.17.15",
+		"prettier": "^2.2.1",
+		"webstorm-disable-index": "^1.2.0"
+	},
+	"engines": {
+		"node": ">=8.0.0"
+	},
+	"scripts": {
+		"test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+		"test-local": "egg-bin test",
+		"cov": "egg-bin cov",
+		"lint": "eslint .",
+		"ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
+		"pkgfiles": "egg-bin pkgfiles",
+		"autod": "autod"
+	},
+	"files": [
+		"app",
+		"config",
+		"app.js",
+		"index.d.ts"
+	],
+	"ci": {
+		"version": "8, 9"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
+	},
+	"bugs": {
+		"url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
+	},
+	"homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
+	"author": "saqqdy <saqqdy@qq.com>",
+	"license": "MIT"
 }
