@@ -1,5 +1,3 @@
-
-
 module.exports = app => {
-  app.config.coreMiddleware.unshift('httpProxyPlus')
+	app.config.coreMiddleware.unshift('httpProxyPlus')
 }

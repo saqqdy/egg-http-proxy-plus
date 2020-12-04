@@ -16,9 +16,8 @@
 	],
 	"dependencies": {
 		"egg-path-matching": "^1.0.1",
-		"http-proxy-middleware": "^1.0.6",
-		"koa2-connect": "^1.0.2",
-		"lodash": "^4.17.20"
+		"http-proxy-middleware": "0.19.0",
+		"koa2-connect": "^1.0.2"
 	},
 	"devDependencies": {
 		"autod": "^3.1.1",
@@ -31,9 +30,6 @@
 		"eslint": "^7.14.0",
 		"eslint-config-egg": "^9.0.0",
 		"express": "^4.17.1",
-		"http-proxy-middleware": "^0.20.0",
-		"koa2-connect": "^1.0.2",
-		"lodash": "^4.17.15",
 		"prettier": "^2.2.1",
 		"webstorm-disable-index": "^1.2.0"
 	},
