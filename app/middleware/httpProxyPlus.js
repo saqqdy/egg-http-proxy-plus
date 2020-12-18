@@ -1,4 +1,4 @@
-const { createProxyMiddleware } = require('http-proxy-middleware')
+const proxy = require('http-proxy-middleware')
 const c2k = require('koa2-connect')
 const pathMatching = require('egg-path-matching')
 const getType = obj => {
@@ -23,20 +23,20 @@ module.exports = options => {
 			options.forEach(context => {
 				let proxyOptions = context.options || {}
 				if (typeof proxyOptions === 'string') proxyOptions = { target: proxyOptions }
+				const { onProxyReq = null, onProxyRes = null } = Object.assign({}, proxyOptions)
+				if (onProxyReq) proxyOptions.onProxyReq = (...args) => onProxyReq.call(null, ctx, ...args)
+				if (onProxyRes) proxyOptions.onProxyRes = (...args) => onProxyRes.call(null, ctx, ...args)
 				if (getType(context.origin) === 'function') {
 					// custom matching
 					const isMatch = context.origin(path.split('?')[0], ctx.req)
-					isMatch && c2k(createProxyMiddleware(context.origin, proxyOptions))(ctx, next)
+					isMatch && c2k(proxy(context.origin, proxyOptions))(ctx, next)
 					return isMatch
 				}
 				// context.origin配置的数组、字符串
 				const match = pathMatching({ match: context.origin })
 				const isMatch = match({ path })
 				if (isMatch) {
-					const { onProxyReq = null, onProxyRes = null } = Object.assign({}, proxyOptions)
-					if (onProxyReq) proxyOptions.onProxyReq = (...args) => onProxyReq.call(null, ctx, ...args)
-					if (onProxyRes) proxyOptions.onProxyRes = (...args) => onProxyRes.call(null, ctx, ...args)
-					c2k(createProxyMiddleware(context.origin, proxyOptions))(ctx, next)
+					c2k(proxy(context.origin, proxyOptions))(ctx, next)
 				}
 				return isMatch
 			})
@@ -49,10 +49,11 @@ module.exports = options => {
 				const isMatch = match({ path })
 				if (isMatch) {
 					let proxyOptions = options[context]
-					if (typeof proxyOptions === 'string') {
-						proxyOptions = { target: proxyOptions }
-					}
-					await c2k(createProxyMiddleware(context, proxyOptions))(ctx, next)
+					if (typeof proxyOptions === 'string') proxyOptions = { target: proxyOptions }
+					const { onProxyReq = null, onProxyRes = null } = Object.assign({}, proxyOptions)
+					if (onProxyReq) proxyOptions.onProxyReq = (...args) => onProxyReq.call(null, ctx, ...args)
+					if (onProxyRes) proxyOptions.onProxyRes = (...args) => onProxyRes.call(null, ctx, ...args)
+					await c2k(proxy(context, proxyOptions))(ctx, next)
 				}
 				return isMatch
 			})
