@@ -11,7 +11,7 @@ fork from egg-http-proxy
 
 [npm-image]: https://img.shields.io/npm/v/egg-http-proxy-plus.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-http-proxy-plus
-[travis-image]: https://img.shields.io/travis/saqqdy/egg-http-proxy-plus.svg?style=flat-square
+[travis-image]: https://travis-ci.org/saqqdy/egg-http-proxy-plus.svg?branch=master
 [travis-url]: https://travis-ci.org/saqqdy/egg-http-proxy-plus
 [codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/egg-http-proxy-plus.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/saqqdy/egg-http-proxy-plus?branch=master

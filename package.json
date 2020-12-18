@@ -1,6 +1,6 @@
 {
 	"name": "egg-http-proxy-plus",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "powerfull proxy middleware plugin for egg",
 	"eggPlugin": {
 		"name": "httpProxyPlus"
@@ -16,7 +16,7 @@
 	],
 	"dependencies": {
 		"egg-path-matching": "^1.0.1",
-		"http-proxy-middleware": "0.19.0",
+		"http-proxy-middleware": "^1.0.6",
 		"koa2-connect": "^1.0.2"
 	},
 	"devDependencies": {
@@ -27,7 +27,7 @@
 		"egg-ci": "^1.18.0",
 		"egg-mock": "^4.0.1",
 		"egg-path-matching": "^1.0.1",
-		"eslint": "^7.14.0",
+		"eslint": "^7.15.0",
 		"eslint-config-egg": "^9.0.0",
 		"express": "^4.17.1",
 		"prettier": "^2.2.1",
