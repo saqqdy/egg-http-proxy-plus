@@ -1,6 +1,7 @@
-const proxy = require('http-proxy-middleware')
-const c2k = require('koa2-connect')
+const { createProxyMiddleware } = require('http-proxy-middleware')
+const c2k = require('koa-connect')
 const pathMatching = require('egg-path-matching')
+
 const getType = obj => {
 	const type = {
 		'[object Array]': 'array',
@@ -15,48 +16,52 @@ const getType = obj => {
 	if (obj === null) return obj + ''
 	return typeof obj === 'object' || typeof obj === 'function' ? type[Object.prototype.toString.call(obj)] || 'object' : typeof obj
 }
+
 module.exports = options => {
-	return async function httpProxyPlus(ctx, next) {
+	return async (ctx, next) => {
 		const path = ctx.request.originalUrl || ctx.request.url
 		const optType = getType(options)
-		if (optType === 'array') {
-			options.forEach(context => {
-				let proxyOptions = context.options || {}
-				if (typeof proxyOptions === 'string') proxyOptions = { target: proxyOptions }
-				const { onProxyReq = null, onProxyRes = null } = Object.assign({}, proxyOptions)
-				if (onProxyReq) proxyOptions.onProxyReq = (...args) => onProxyReq.call(null, ctx, ...args)
-				if (onProxyRes) proxyOptions.onProxyRes = (...args) => onProxyRes.call(null, ctx, ...args)
-				if (getType(context.origin) === 'function') {
-					// custom matching
-					const isMatch = context.origin(path.split('?')[0], ctx.req)
-					isMatch && c2k(proxy(context.origin, proxyOptions))(ctx, next)
-					return isMatch
+		if (optType === 'object') {
+			options = Object.keys(options).map(context => ({
+				origin: context,
+				options: options[context]
+			}))
+		}
+		for (const context of options) {
+			let proxyOptions = context.options || {},
+				isMatch
+			if (typeof proxyOptions === 'string') proxyOptions = { target: proxyOptions }
+			const { onProxyReq = null, onProxyRes = null } = proxyOptions
+			proxyOptions = {
+				...proxyOptions,
+				onProxyReq(proxyReq, req, res, context = ctx) {
+					if (onProxyReq && typeof onProxyReq === 'function') {
+						onProxyReq(proxyReq, req, res, ctx)
+					}
+					const { rawBody, body: requestBody } = ctx.request
+					if (requestBody && rawBody) {
+						proxyReq.setHeader('Content-Length', Buffer.byteLength(rawBody))
+						proxyReq.write(rawBody)
+						proxyReq.end()
+					}
+					return proxyReq
+				},
+				onProxyRes(proxyRes, req, res, context = ctx) {
+					if (onProxyRes && typeof onProxyRes === 'function') {
+						onProxyRes(proxyRes, req, res, ctx)
+					}
+					return proxyRes
 				}
+			}
+			if (getType(context.origin) === 'function') {
+				// custom matching
+				isMatch = context.origin(path.split('?')[0], ctx.req)
+			} else {
 				// context.origin配置的数组、字符串
 				const match = pathMatching({ match: context.origin })
-				const isMatch = match({ path })
-				if (isMatch) {
-					c2k(proxy(context.origin, proxyOptions))(ctx, next)
-				}
-				return isMatch
-			})
-		} else if (optType === 'object') {
-			;[('enable', 'match', 'ignore')].forEach(el => {
-				if (options.hasOwnProperty(el)) delete options[el]
-			})
-			Object.keys(options).some(async context => {
-				const match = pathMatching({ match: context })
-				const isMatch = match({ path })
-				if (isMatch) {
-					let proxyOptions = options[context]
-					if (typeof proxyOptions === 'string') proxyOptions = { target: proxyOptions }
-					const { onProxyReq = null, onProxyRes = null } = Object.assign({}, proxyOptions)
-					if (onProxyReq) proxyOptions.onProxyReq = (...args) => onProxyReq.call(null, ctx, ...args)
-					if (onProxyRes) proxyOptions.onProxyRes = (...args) => onProxyRes.call(null, ctx, ...args)
-					await c2k(proxy(context, proxyOptions))(ctx, next)
-				}
-				return isMatch
-			})
+				isMatch = match({ path })
+			}
+			isMatch && (await c2k(createProxyMiddleware(context.origin, proxyOptions))(ctx, next))
 		}
 		await next()
 	}

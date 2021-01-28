@@ -1,6 +1,8 @@
 # egg-http-proxy-plus
 fork from egg-http-proxy
 
+### 支持转发文件上传接口，支持自定义匹配方法，ctx透传
+
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
