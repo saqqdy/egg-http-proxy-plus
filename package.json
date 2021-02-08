@@ -17,6 +17,7 @@
 	"dependencies": {
 		"egg-path-matching": "^1.0.1",
 		"http-proxy-middleware": "^1.0.6",
+		"js-cool": "^1.0.4",
 		"koa-connect": "^2.1.0"
 	},
 	"devDependencies": {
@@ -27,7 +28,7 @@
 		"egg-ci": "^1.18.0",
 		"egg-mock": "^4.0.1",
 		"egg-path-matching": "^1.0.1",
-		"eslint": "^7.15.0",
+		"eslint": "^7.19.0",
 		"eslint-config-egg": "^9.0.0",
 		"express": "^4.17.1",
 		"prettier": "^2.2.1",

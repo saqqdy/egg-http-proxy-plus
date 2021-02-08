@@ -1,21 +1,7 @@
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const c2k = require('koa-connect')
 const pathMatching = require('egg-path-matching')
-
-const getType = obj => {
-	const type = {
-		'[object Array]': 'array',
-		'[object Boolean]': 'boolean',
-		'[object Date]': 'date',
-		'[object Function]': 'function',
-		'[object Number]': 'number',
-		'[object Object]': 'object',
-		'[object RegExp]': 'regexp',
-		'[object String]': 'string'
-	}
-	if (obj === null) return obj + ''
-	return typeof obj === 'object' || typeof obj === 'function' ? type[Object.prototype.toString.call(obj)] || 'object' : typeof obj
-}
+const getType = require('js-cool/lib/getType')
 
 module.exports = options => {
 	return async (ctx, next) => {
