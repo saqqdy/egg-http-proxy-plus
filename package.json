@@ -5,6 +5,17 @@
 	"eggPlugin": {
 		"name": "httpProxyPlus"
 	},
+	"scripts": {
+		"test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+		"test-local": "egg-bin test",
+		"cov": "egg-bin cov",
+		"lint": "eslint .",
+		"ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
+		"pkgfiles": "egg-bin pkgfiles",
+		"autod": "autod",
+		"eslint": "eslint --fix --ext .js",
+		"prettier": "prettier --write ./"
+	},
 	"keywords": [
 		"egg",
 		"eggPlugin",
@@ -17,10 +28,12 @@
 	"dependencies": {
 		"egg-path-matching": "^1.0.1",
 		"http-proxy-middleware": "^1.0.6",
-		"js-cool": "^1.0.4",
+		"js-cool": "^1.0.6",
 		"koa-connect": "^2.1.0"
 	},
 	"devDependencies": {
+		"@babel/eslint-parser": "^7.12.17",
+		"@saqqdy/prettier-config": "^1.0.3",
 		"autod": "^3.1.1",
 		"autod-egg": "^1.1.0",
 		"egg": "^2.29.1",
@@ -30,21 +43,14 @@
 		"egg-path-matching": "^1.0.1",
 		"eslint": "^7.19.0",
 		"eslint-config-egg": "^9.0.0",
+		"eslint-config-sets": "^1.0.10",
+		"eslint-plugin-jsdoc": "^32.0.2",
 		"express": "^4.17.1",
 		"prettier": "^2.2.1",
 		"webstorm-disable-index": "^1.2.0"
 	},
 	"engines": {
 		"node": ">=8.0.0"
-	},
-	"scripts": {
-		"test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
-		"test-local": "egg-bin test",
-		"cov": "egg-bin cov",
-		"lint": "eslint .",
-		"ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
-		"pkgfiles": "egg-bin pkgfiles",
-		"autod": "autod"
 	},
 	"files": [
 		"app",
