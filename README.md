@@ -49,8 +49,8 @@ $ yarn add egg-http-proxy-plus
 ```js
 // {app_root}/config/plugin.js
 exports.httpProxyPlus = {
-	enable: true,
-	package: 'egg-http-proxy-plus'
+    enable: true,
+    package: 'egg-http-proxy-plus'
 }
 ```
 
@@ -61,14 +61,14 @@ exports.httpProxyPlus = {
 ```js
 // {app_root}/config/config.default.js
 exports.httpProxyPlus = {
-	'/api': 'http://www.example.org'
+    '/api': 'http://www.example.org'
 }
 // or
 exports.httpProxyPlus = [
-	{
-		origin: '/api',
-		options: 'http://www.example.org'
-	}
+    {
+        origin: '/api',
+        options: 'http://www.example.org'
+    }
 ]
 ```
 
@@ -79,21 +79,21 @@ If you don't want `/api` to be passed along, we need to rewrite the path:
 ```js
 // {app_root}/config/config.default.js
 exports.httpProxyPlus = {
-	'/api': {
-		target: 'http://www.example.org',
-		pathRewrite: { '^/api': '' }
-	}
+    '/api': {
+        target: 'http://www.example.org',
+        pathRewrite: { '^/api': '' }
+    }
 }
 // or
 exports.httpProxyPlus = [
-	{
-		origin: '/api',
-		options: {
-			target: 'http://www.example.org',
-			pathRewrite: { '^/api': '' }
-			// ...
-		}
-	}
+    {
+        origin: '/api',
+        options: {
+            target: 'http://www.example.org',
+            pathRewrite: { '^/api': '' }
+            // ...
+        }
+    }
 ]
 ```
 
@@ -104,12 +104,12 @@ For full control you can provide a custom function to determine which requests s
 ```js
 // {app_root}/config/config.default.js
 exports.httpProxyPlus = [
-	{
-		origin(pathname, req) {
-			return pathname.match('^/api') && req.method === 'GET'
-		},
-		options: {}
-	}
+    {
+        origin(pathname, req) {
+            return pathname.match('^/api') && req.method === 'GET'
+        },
+        options: {}
+    }
 ]
 ```
 
@@ -120,15 +120,15 @@ Pay attention to the fourth parameter, the plug-in transparently transmits the c
 ```js
 // {app_root}/config/config.default.js
 exports.httpProxyPlus = {
-	'/api': {
-		target: 'http://www.example.org',
-		onProxyReq(proxyReq, req, res, ctx) {
-			if (req.method.toLowerCase() === 'post') {
-				const token = ctx.cookies.get('access_token')
-				token && proxyReq.setHeader('authorization', token)
-			}
-		}
-	}
+    '/api': {
+        target: 'http://www.example.org',
+        onProxyReq(proxyReq, req, res, ctx) {
+            if (req.method.toLowerCase() === 'post') {
+                const token = ctx.cookies.get('access_token')
+                token && proxyReq.setHeader('authorization', token)
+            }
+        }
+    }
 }
 ```
 

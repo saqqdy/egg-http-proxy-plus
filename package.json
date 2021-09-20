@@ -1,73 +1,73 @@
 {
-	"name": "egg-http-proxy-plus",
-	"version": "1.1.0",
-	"description": "powerfull proxy middleware plugin for egg",
-	"eggPlugin": {
-		"name": "httpProxyPlus"
-	},
-	"scripts": {
-		"test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
-		"test-local": "egg-bin test",
-		"cov": "egg-bin cov",
-		"lint": "eslint .",
-		"ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
-		"pkgfiles": "egg-bin pkgfiles",
-		"autod": "autod",
-		"eslint": "eslint --fix --ext .js",
-		"prettier": "prettier --write ./"
-	},
-	"keywords": [
-		"egg",
-		"eggPlugin",
-		"egg-plugin",
-		"proxy",
-		"http-proxy",
-		"http-proxy-plus",
-		"http-proxy-middleware"
-	],
-	"dependencies": {
-		"egg-path-matching": "^1.0.1",
-		"http-proxy-middleware": "^2.0.1",
-		"js-cool": "^2.1.2",
-		"koa-connect": "^2.1.0"
-	},
-	"devDependencies": {
-		"@saqqdy/prettier-config": "^1.0.4",
-		"autod": "^3.1.1",
-		"autod-egg": "^1.1.0",
-		"babel-eslint": "^10.1.0",
-		"egg": "^2.30.0",
-		"egg-bin": "^4.16.4",
-		"egg-ci": "^1.19.0",
-		"egg-mock": "^3.26.0",
-		"eslint": "^7.32.0",
-		"eslint-config-egg": "^9.0.0",
-		"eslint-config-sets": "^1.5.2",
-		"eslint-plugin-jsdoc": "^36.1.0",
-		"express": "^4.17.1",
-		"prettier": "^2.4.1",
-		"webstorm-disable-index": "^1.2.0"
-	},
-	"engines": {
-		"node": ">=8.0.0"
-	},
-	"files": [
-		"app",
-		"config",
-		"app.js",
-		"index.d.ts"
-	],
-	"ci": {
-		"version": "8, 9"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
-	},
-	"bugs": {
-		"url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
-	},
-	"homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
-	"author": "saqqdy <saqqdy@qq.com>",
-	"license": "MIT"
+    "name": "egg-http-proxy-plus",
+    "version": "1.1.0",
+    "description": "powerfull proxy middleware plugin for egg",
+    "eggPlugin": {
+        "name": "httpProxyPlus"
+    },
+    "scripts": {
+        "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+        "test-local": "egg-bin test",
+        "cov": "egg-bin cov",
+        "lint": "eslint .",
+        "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
+        "pkgfiles": "egg-bin pkgfiles",
+        "autod": "autod",
+        "eslint": "eslint --fix --ext .js",
+        "prettier": "prettier --write ./"
+    },
+    "keywords": [
+        "egg",
+        "eggPlugin",
+        "egg-plugin",
+        "proxy",
+        "http-proxy",
+        "http-proxy-plus",
+        "http-proxy-middleware"
+    ],
+    "dependencies": {
+        "egg-path-matching": "^1.0.1",
+        "http-proxy-middleware": "^2.0.1",
+        "js-cool": "^2.1.2",
+        "koa-connect": "^2.1.0"
+    },
+    "devDependencies": {
+        "@saqqdy/prettier-config": "^1.0.4",
+        "autod": "^3.1.1",
+        "autod-egg": "^1.1.0",
+        "babel-eslint": "^10.1.0",
+        "egg": "^2.30.0",
+        "egg-bin": "^4.16.4",
+        "egg-ci": "^1.19.0",
+        "egg-mock": "^3.26.0",
+        "eslint": "^7.32.0",
+        "eslint-config-egg": "^9.0.0",
+        "eslint-config-sets": "^1.5.3",
+        "eslint-plugin-jsdoc": "^36.1.0",
+        "express": "^4.17.1",
+        "prettier": "^2.4.1",
+        "webstorm-disable-index": "^1.2.0"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "files": [
+        "app",
+        "config",
+        "app.js",
+        "index.d.ts"
+    ],
+    "ci": {
+        "version": "8, 9"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
+    },
+    "bugs": {
+        "url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
+    },
+    "homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
+    "author": "saqqdy <saqqdy@qq.com>",
+    "license": "MIT"
 }
