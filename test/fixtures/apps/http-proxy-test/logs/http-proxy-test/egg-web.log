@@ -1,14 +1,14 @@
-2021-09-20 14:16:12,427 INFO 84615 [egg:logger] init all loggers with options: {"dir":"/Users/saqqdy/www/saqqdy/egg-http-proxy-plus/test/fixtures/apps/http-proxy-test/logs/http-proxy-test","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"http-proxy-test-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"allowDebugAtProd":false,"type":"application"}
-2021-09-20 14:16:12,433 INFO 84615 [egg-multipart] stream mode enable
-2021-09-20 14:16:12,654 INFO 84615 [egg-static] starting static serve /public/ -> /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/test/fixtures/apps/http-proxy-test/app/public
-2021-09-20 14:16:12,657 INFO 84615 [egg-security] use csrf middleware
-2021-09-20 14:16:12,659 INFO 84615 [egg-security] use methodnoallow middleware
-2021-09-20 14:16:12,659 INFO 84615 [egg-security] use noopen middleware
-2021-09-20 14:16:12,661 INFO 84615 [egg-security] use nosniff middleware
-2021-09-20 14:16:12,662 INFO 84615 [egg-security] use xssProtection middleware
-2021-09-20 14:16:12,663 INFO 84615 [egg-security] use xframe middleware
-2021-09-20 14:16:12,663 INFO 84615 [egg-security] use dta middleware
-2021-09-20 14:16:12,663 INFO 84615 [egg-security] compose 7 middlewares into one security middleware
-2021-09-20 14:16:12,675 INFO 84615 [egg:core] dump config after load, 3ms
-2021-09-20 14:16:12,682 INFO 84615 [egg-watcher:application] watcher start success
-2021-09-20 14:16:12,686 INFO 84615 [egg:core] dump config after ready, 3ms
+2021-09-20 14:43:33,248 INFO 88366 [egg:logger] init all loggers with options: {"dir":"/Users/saqqdy/www/saqqdy/egg-http-proxy-plus/test/fixtures/apps/http-proxy-test/logs/http-proxy-test","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"http-proxy-test-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"allowDebugAtProd":false,"type":"application"}
+2021-09-20 14:43:33,253 INFO 88366 [egg-multipart] stream mode enable
+2021-09-20 14:43:33,484 INFO 88366 [egg-static] starting static serve /public/ -> /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/test/fixtures/apps/http-proxy-test/app/public
+2021-09-20 14:43:33,486 INFO 88366 [egg-security] use csrf middleware
+2021-09-20 14:43:33,488 INFO 88366 [egg-security] use methodnoallow middleware
+2021-09-20 14:43:33,489 INFO 88366 [egg-security] use noopen middleware
+2021-09-20 14:43:33,490 INFO 88366 [egg-security] use nosniff middleware
+2021-09-20 14:43:33,490 INFO 88366 [egg-security] use xssProtection middleware
+2021-09-20 14:43:33,491 INFO 88366 [egg-security] use xframe middleware
+2021-09-20 14:43:33,492 INFO 88366 [egg-security] use dta middleware
+2021-09-20 14:43:33,492 INFO 88366 [egg-security] compose 7 middlewares into one security middleware
+2021-09-20 14:43:33,503 INFO 88366 [egg:core] dump config after load, 3ms
+2021-09-20 14:43:33,510 INFO 88366 [egg-watcher:application] watcher start success
+2021-09-20 14:43:33,514 INFO 88366 [egg:core] dump config after ready, 3ms
