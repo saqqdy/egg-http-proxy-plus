@@ -1,6 +1,6 @@
 # egg-http-proxy-plus
 
-### 支持转发文件上传接口，支持自定义匹配方法，ctx 透传
+支持转发文件上传接口，支持自定义匹配方法，ctx 透传
 
 [![NPM version][npm-image]][npm-url]
 [![Codacy Badge][codacy-image]][codacy-url]
@@ -56,7 +56,7 @@ exports.httpProxyPlus = {
 
 ## Configuration
 
-#### Proxy `/api` requests to `http://www.example.org`
+### Proxy `/api` requests to `http://www.example.org`
 
 ```js
 // {app_root}/config/config.default.js
