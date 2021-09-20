@@ -17,8 +17,8 @@
 [npm-url]: https://npmjs.org/package/egg-http-proxy-plus
 [codacy-image]: https://app.codacy.com/project/badge/Grade/f70d4880e4ad4f40aa970eb9ee9d0696
 [codacy-url]: https://www.codacy.com/gh/saqqdy/egg-http-proxy-plus/dashboard?utm_source=github.com&utm_medium=referral&utm_content=saqqdy/egg-http-proxy-plus&utm_campaign=Badge_Grade
-[travis-image]: https://travis-ci.org/saqqdy/egg-http-proxy-plus.svg?branch=master
-[travis-url]: https://travis-ci.org/saqqdy/egg-http-proxy-plus
+[travis-image]: https://travis-ci.com/saqqdy/egg-http-proxy-plus.svg?branch=master
+[travis-url]: https://travis-ci.com/saqqdy/egg-http-proxy-plus
 [codecov-image]: https://img.shields.io/codecov/c/github/saqqdy/egg-http-proxy-plus.svg?style=flat-square
 [codecov-url]: https://codecov.io/github/saqqdy/egg-http-proxy-plus?branch=master
 [david-image]: https://img.shields.io/david/saqqdy/egg-http-proxy-plus.svg?style=flat-square
