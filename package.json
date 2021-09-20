@@ -44,6 +44,7 @@
 		"eslint-config-egg": "^9.0.0",
 		"eslint-config-sets": "^1.5.2",
 		"eslint-plugin-jsdoc": "^36.1.0",
+		"express": "^4.17.1",
 		"prettier": "^2.4.1",
 		"webstorm-disable-index": "^1.2.0"
 	},

@@ -1,0 +1,6 @@
+2021-09-20 14:16:12,432 INFO 84615 [egg-schedule]: register schedule /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2021-09-20 14:16:12,432 INFO 84615 [egg-schedule]: register schedule /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/node_modules/egg-logrotator/app/schedule/clean_log.js
+2021-09-20 14:16:12,432 INFO 84615 [egg-schedule]: register schedule /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2021-09-20 14:16:12,688 INFO 84615 [Timer] /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 51227313ms at 2021-09-21 04:30:00.001
+2021-09-20 14:16:12,689 INFO 84615 [Timer] /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 35027311ms at 2021-09-21 00:00:00.000
+2021-09-20 14:16:12,689 INFO 84615 [Timer] /Users/saqqdy/www/saqqdy/egg-http-proxy-plus/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 35028311ms at 2021-09-21 00:00:01.000

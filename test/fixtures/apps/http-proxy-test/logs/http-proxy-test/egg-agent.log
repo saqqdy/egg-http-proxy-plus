@@ -1,0 +1,4 @@
+2021-09-20 14:16:12,286 INFO 84615 [egg:logger] init all loggers with options: {"dir":"/Users/saqqdy/www/saqqdy/egg-http-proxy-plus/test/fixtures/apps/http-proxy-test/logs/http-proxy-test","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"http-proxy-test-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"allowDebugAtProd":false,"type":"agent"}
+2021-09-20 14:16:12,291 INFO 84615 [egg:core] dump config after load, 2ms
+2021-09-20 14:16:12,328 INFO 84615 [egg-watcher:agent] watcher start success
+2021-09-20 14:16:12,333 INFO 84615 [egg:core] dump config after ready, 4ms
