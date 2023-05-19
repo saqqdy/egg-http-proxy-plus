@@ -1,17 +1,12 @@
 {
 	"name": "egg-http-proxy-plus",
-	"description": "powerfull proxy middleware plugin for egg",
-	"version": "2.0.0",
+	"description": "An egg middleware for adding contexts",
+	"version": "1.1.0",
 	"packageManager": "pnpm@8.5.1",
 	"eggPlugin": {
-		"name": "httpProxyPlus"
+		"name": "withContext"
 	},
-	"files": [
-		"app",
-		"config",
-		"app.js",
-		"index.d.ts"
-	],
+	"files": ["app", "config", "app.js"],
 	"scripts": {
 		"test": "pnpm run lint -- --fix && egg-bin pkgfiles && pnpm run test-local",
 		"test-local": "egg-bin test",
@@ -28,10 +23,7 @@
 		"prettier": "prettier --write \"**/*.{js,ts,json,md}\""
 	},
 	"dependencies": {
-		"egg-path-matching": "^1.0.1",
-		"http-proxy-middleware": "^2.0.6",
-		"js-cool": "^4.0.0",
-		"koa-connect": "^2.1.0"
+		"js-cool": "^4.0.0"
 	},
 	"devDependencies": {
 		"@eslint-sets/eslint-config-basic": "^5.2.0",
@@ -40,52 +32,45 @@
 		"egg": "^3.16.0",
 		"egg-bin": "^6.4.0",
 		"egg-ci": "^2.2.0",
-		"egg-mock": "^5.10.6",
 		"eslint": "^8.40.0",
 		"eslint-config-egg": "^12.2.1",
 		"eslint-plugin-jsdoc": "^44.2.4",
-		"load-yml": "^1.3.0",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.8.8",
 		"prettier-config-common": "^1.4.0",
-		"reinstaller": "^3.0.0",
 		"tsnd": "^1.1.0",
 		"webstorm-disable-index": "^1.2.0"
 	},
-    "peerDependencyRules": {
-		"http-proxy-middleware": ">=2",
-		"js-cool": ">=2 <=4"
-    },
+	"peerDependencies": {
+		"egg": ">= 2",
+		"egg-bin": ">= 4",
+		"js-cool": ">= 4"
+	},
+	"keywords": [
+		"eggjs",
+		"eggPlugin",
+		"egg-http-proxy-plus",
+		"egg-plugin",
+		"egg-middleware",
+		"egg-context",
+		"withContext",
+		"context"
+	],
 	"engines": {
 		"node": ">=12.0.0"
 	},
-	"resolutions": {
-		"fsevents": ">= 2.0.0"
-	},
 	"pnpm": {
 		"peerDependencyRules": {
-			"ignoreMissing": [
-				"@babel/core",
-				"@types/node",
-				"webpack",
-				"typescript",
-				"mocha"
-			],
+			"ignoreMissing": ["@babel/core", "@types/node", "webpack", "typescript", "mocha"],
 			"allowedVersions": {
 				"eslint": ">= 8.0.0",
 				"fsevents": ">= 2.0.0"
 			}
 		}
 	},
-	"keywords": [
-		"egg",
-		"eggPlugin",
-		"egg-plugin",
-		"proxy",
-		"http-proxy",
-		"http-proxy-plus",
-		"http-proxy-middleware"
-	],
+	"resolutions": {
+		"fsevents": ">= 2.0.0"
+	},
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org",
 		"access": "public"
@@ -95,12 +80,12 @@
 	},
 	"license": "MIT",
 	"author": "saqqdy <https://github.com/saqqdy>",
-	"homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
-	"bugs": {
-		"url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
-	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
-	}
+	},
+	"bugs": {
+		"url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
+	},
+	"homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme"
 }

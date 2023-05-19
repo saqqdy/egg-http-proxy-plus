@@ -1,6 +1,11 @@
-/dist/
-/nuxt/
-/run/
-/logs/
-/test/
+.git
+node_modules
+/run
+dist
+public
 
+*.bak
+*_bak
+*.bak.js
+
+stats.html
