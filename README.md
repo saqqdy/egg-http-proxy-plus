@@ -135,7 +135,6 @@ exports.httpProxyPlus = {
             }
         }
     }
-  }
 }
 ```
 
@@ -295,3 +294,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 [license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: LICENSE
 [node-image]: https://img.shields.io/node/v/egg-http-proxy-plus.svg?style=flat-square
+[node-url]: https://nodejs.org/en/download/
