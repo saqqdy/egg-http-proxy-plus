@@ -10,8 +10,9 @@ export default eslintConfig({
   stylistic: true,
   vue: true,
   typescript: false,
-  overrides: [
+  extends: [
     {
+      name: 'mocha-globals',
       files: ['test/**/*.js'],
       languageOptions: {
         globals: {
