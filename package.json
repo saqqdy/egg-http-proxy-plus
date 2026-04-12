@@ -1,75 +1,69 @@
 {
-    "name": "egg-http-proxy-plus",
-    "version": "2.1.0",
-	"packageManager": "pnpm@9.15.9",
-    "description": "powerfull proxy middleware plugin for egg",
-    "eggPlugin": {
-        "name": "httpProxyPlus"
-    },
-    "scripts": {
-        "test": "npm run lint -- --fix && npm run test-local",
-        "test-local": "egg-bin test",
-        "cov": "egg-bin cov",
-        "lint": "eslint .",
-        "ci": "npm run lint && npm run cov",
-        "autod": "autod",
-        "eslint": "eslint --fix --ext .js",
-        "prepare": "husky install"
-    },
-    "keywords": [
-        "egg",
-        "eggPlugin",
-        "egg-plugin",
-        "proxy",
-        "http-proxy",
-        "http-proxy-plus",
-        "http-proxy-middleware"
-    ],
-    "dependencies": {
-        "egg-path-matching": "^1.2.0",
-        "http-proxy-middleware": "^3.0.5",
-        "js-cool": "^2.1.2",
-        "koa-connect": "^2.1.1"
-    },
-    "devDependencies": {
-		"@eslint-sets/eslint-config": "^6.3.1",
-        "autod": "^3.1.2",
-        "autod-egg": "^1.1.0",
-        "egg": "^3.34.0",
-        "egg-bin": "^6.13.0",
-        "egg-ci": "^2.2.0",
-        "egg-mock": "^5.15.2",
-		"eslint": "^9.39.4",
-        "express": "^4.22.1",
-        "husky": "^9.1.7",
-        "lint-staged": "^15.5.2",
-        "webstorm-disable-index": "^1.2.0"
-    },
-    "lint-staged": {
-        "*.js": [
-            "eslint --fix"
-        ]
-    },
-    "engines": {
-        "node": ">=14.0.0"
-    },
-    "files": [
-        "app",
-        "config",
-        "app.js",
-        "index.d.ts"
-    ],
-    "ci": {
-        "version": "18, 20, 22"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
-    },
-    "bugs": {
-        "url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
-    },
-    "homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
-    "author": "saqqdy <saqqdy@qq.com>",
-    "license": "MIT"
+  "name": "egg-http-proxy-plus",
+  "description": "A powerful HTTP proxy middleware plugin for Egg.js with TypeScript support",
+  "version": "2.1.0",
+  "main": "app.js",
+  "types": "index.d.ts",
+  "files": [
+    "app",
+    "config",
+    "app.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "npm run lint && egg-bin test",
+    "test:local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "ci": "npm run lint && npm run cov"
+  },
+  "dependencies": {
+    "egg-path-matching": "^1.2.0",
+    "http-proxy-middleware": "^3.0.5",
+    "js-cool": "^2.1.2",
+    "koa-connect": "^2.1.1"
+  },
+  "devDependencies": {
+    "egg": "^3.34.0",
+    "egg-bin": "^6.13.0",
+    "egg-ci": "^2.2.0",
+    "egg-mock": "^5.15.2",
+    "eslint": "^9.39.4",
+    "express": "^4.22.1"
+  },
+  "peerDependencies": {
+    "egg": ">=3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "eggPlugin": {
+    "name": "httpProxyPlus"
+  },
+  "ci": {
+    "version": "18, 20, 22"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "egg",
+    "egg-plugin",
+    "eggPlugin",
+    "proxy",
+    "http-proxy",
+    "http-proxy-middleware",
+    "middleware",
+    "websocket",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "saqqdy <saqqdy@qq.com>",
+  "homepage": "https://github.com/saqqdy/egg-http-proxy-plus#readme",
+  "bugs": {
+    "url": "https://github.com/saqqdy/egg-http-proxy-plus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saqqdy/egg-http-proxy-plus.git"
+  }
 }

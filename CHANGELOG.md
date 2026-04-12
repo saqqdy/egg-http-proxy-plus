@@ -8,7 +8,6 @@ All notable changes to this project will be documented in this file.
 
 - Add TypeScript type definitions (`index.d.ts`)
 - Add integration test examples in `examples/proxy-demo/`
-- Add `husky` + `lint-staged` for git hooks
 - Add `.node-version` file for version managers
 - Add GitHub Dependabot configuration
 - Add GitHub Release workflow
@@ -39,6 +38,7 @@ All notable changes to this project will be documented in this file.
 - Remove test fixtures `logs/` and `run/` from git tracking
 - Remove `.travis.yml` (migrated to GitHub Actions)
 - Remove `.eslintignore` and `.prettierignore` (using flat config)
+- Remove `husky` and `lint-staged`
 
 ## [1.1.0] - 2021-09-01
 

@@ -1,8 +1,8 @@
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 
 exports.httpProxyPlus = {
-    enable: true,
-    path: path.join(__dirname, '../../../../../')
+  enable: true,
+  path: path.join(__dirname, '../../../../../'),
 }

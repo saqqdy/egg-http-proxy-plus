@@ -27,7 +27,7 @@ exports.httpProxyPlus = {
             const token = ctx.cookies.get('access_token') || ctx.get('authorization')
             if (token) {
                 proxyReq.setHeader('Authorization', `Bearer ${token}`)
-                console.log('[Proxy] Added Authorization header')
+                console.info('[Proxy] Added Authorization header')
             }
             // Add custom header
             proxyReq.setHeader('X-Proxy-By', 'egg-http-proxy-plus')
@@ -39,11 +39,11 @@ exports.httpProxyPlus = {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api': '' },
         changeOrigin: true,
-        onProxyRes(proxyRes, req, res, ctx) {
+        onProxyRes(proxyRes) {
             // Add response headers
             proxyRes.headers['x-proxy-server'] = 'egg-http-proxy-plus'
             proxyRes.headers['x-proxy-time'] = Date.now()
-            console.log('[Proxy] Response status:', proxyRes.statusCode)
+            console.info('[Proxy] Response status:', proxyRes.statusCode)
         }
     },
 

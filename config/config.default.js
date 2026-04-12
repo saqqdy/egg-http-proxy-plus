@@ -1,7 +1,7 @@
 /**
  * egg-http-proxy-plus default config
  * @member Config#httpProxyPlus
- * @property {Object|Array} httpProxyPlus - Proxy configuration
+ * @property {object | Array} httpProxyPlus - Proxy configuration
  *
  * @example
  * // Object style configuration
