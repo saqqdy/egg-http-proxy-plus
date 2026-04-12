@@ -1,0 +1,19 @@
+{
+    "name": "proxy-server",
+    "version": "1.0.0",
+    "description": "Egg.js proxy demo server",
+    "egg": {
+        "declarations": true
+    },
+    "scripts": {
+        "start": "egg-bin dev",
+        "test": "egg-bin test"
+    },
+    "dependencies": {
+        "egg": "^3.17.0",
+        "egg-http-proxy-plus": "file:../.."
+    },
+    "devDependencies": {
+        "egg-bin": "^6.8.1"
+    }
+}

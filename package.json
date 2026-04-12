@@ -1,20 +1,19 @@
 {
     "name": "egg-http-proxy-plus",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "description": "powerfull proxy middleware plugin for egg",
     "eggPlugin": {
         "name": "httpProxyPlus"
     },
     "scripts": {
-        "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+        "test": "npm run lint -- --fix && npm run test-local",
         "test-local": "egg-bin test",
         "cov": "egg-bin cov",
         "lint": "eslint .",
-        "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
-        "pkgfiles": "egg-bin pkgfiles",
+        "ci": "npm run lint && npm run cov",
         "autod": "autod",
         "eslint": "eslint --fix --ext .js",
-        "prettier": "prettier --write ./"
+        "prepare": "husky install"
     },
     "keywords": [
         "egg",
@@ -26,30 +25,32 @@
         "http-proxy-middleware"
     ],
     "dependencies": {
-        "egg-path-matching": "^1.0.1",
-        "http-proxy-middleware": "^2.0.1",
+        "egg-path-matching": "^1.2.0",
+        "http-proxy-middleware": "^3.0.5",
         "js-cool": "^2.1.2",
-        "koa-connect": "^2.1.0"
+        "koa-connect": "^2.1.1"
     },
     "devDependencies": {
-        "@saqqdy/prettier-config": "^1.0.4",
-        "autod": "^3.1.1",
+		"@eslint-sets/eslint-config": "^6.3.1",
+        "autod": "^3.1.2",
         "autod-egg": "^1.1.0",
-        "babel-eslint": "^10.1.0",
-        "egg": "^2.30.0",
-        "egg-bin": "^4.16.4",
-        "egg-ci": "^1.19.0",
-        "egg-mock": "^3.26.0",
-        "eslint": "^7.32.0",
-        "eslint-config-egg": "^9.0.0",
-        "eslint-config-sets": "^1.5.3",
-        "eslint-plugin-jsdoc": "^36.1.0",
-        "express": "^4.17.1",
-        "prettier": "^2.4.1",
+        "egg": "^3.34.0",
+        "egg-bin": "^6.13.0",
+        "egg-ci": "^2.2.0",
+        "egg-mock": "^5.15.2",
+		"eslint": "^9.39.4",
+        "express": "^4.22.1",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.5.2",
         "webstorm-disable-index": "^1.2.0"
     },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix"
+        ]
+    },
     "engines": {
-        "node": ">=8.0.0"
+        "node": ">=14.0.0"
     },
     "files": [
         "app",
@@ -58,7 +59,7 @@
         "index.d.ts"
     ],
     "ci": {
-        "version": "8, 9"
+        "version": "18, 20, 22"
     },
     "repository": {
         "type": "git",

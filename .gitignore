@@ -1,40 +1,61 @@
-.DS_Store
-node_modules
-/dist
-yarn.lock
-/.pnp
+# Dependencies
+node_modules/
+.pnp
 .pnp.js
-*.bak
-*_bak
 
-/tests/e2e/reports/
-selenium-debug.log
+# Build output
+/dist/
 
-# local env files
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# testing
-/coverage
-
-# production
-
-# Log files
+# Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
-package-lock.json
+pnpm-debug.log*
 
-# Editor directories and files
-.idea
-.vscode
+# Lock files (keep one based on your package manager)
+# yarn.lock
+# pnpm-lock.yaml
+
+# Testing
+/coverage/
+.nyc_output/
+
+# IDE
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Backup files
 *.bak
+*_bak
+
+# Run directories (egg.js specific)
+run/
+.runtime/
+
+# Mochawesome reports
+node_modules/.mochawesome-reports/
+
+# Test fixtures logs and runtime
+test/fixtures/**/logs/
+test/fixtures/**/run/
+
+# Examples
+examples/**/node_modules/
+examples/**/logs/
+examples/**/run/
