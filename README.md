@@ -1,5 +1,3 @@
-<div style="text-align: center;" align="center">
-
 # egg-http-proxy-plus
 
 [![NPM version][npm-image]][npm-url]
