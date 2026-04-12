@@ -40,6 +40,17 @@ All notable changes to this project will be documented in this file.
 - Remove `.eslintignore` and `.prettierignore` (using flat config)
 - Remove `husky` and `lint-staged`
 
+## [2.0.1] - 2023-05-01
+
+### Changed
+
+- Upgrade `egg` from v2.x to v3.x
+- Upgrade `egg-bin` from v4.x to v6.x
+- Upgrade `egg-ci` from v1.x to v2.x
+- Upgrade `egg-mock` from v3.x to v5.x
+- Upgrade `js-cool` from v2.x to v4.x
+- Upgrade all package versions
+
 ## [1.1.0] - 2021-09-01
 
 ### Added
@@ -62,6 +73,7 @@ All notable changes to this project will be documented in this file.
 - WebSocket proxy support
 - Request/response modification hooks
 
-[2.1.0]: https://github.com/saqqdy/egg-http-proxy-plus/compare/v2.0.0...v2.1.0
+[2.1.0]: https://github.com/saqqdy/egg-http-proxy-plus/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/saqqdy/egg-http-proxy-plus/compare/v1.1.0...v2.0.1
 [1.1.0]: https://github.com/saqqdy/egg-http-proxy-plus/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/saqqdy/egg-http-proxy-plus/releases/tag/v1.0.0
