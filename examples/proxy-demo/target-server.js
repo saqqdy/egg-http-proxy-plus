@@ -1,6 +1,6 @@
 /**
- * 目标服务器 - 模拟后端 API
- * 启动: node target-server.js
+ * Target server - Mock backend API
+ * Usage: node target-server.js
  */
 'use strict'
 
@@ -9,7 +9,7 @@ const app = express()
 
 app.use(express.json())
 
-// CORS 支持
+// CORS support
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     next()
 })
 
-// 首页
+// Home page
 app.get('/', (req, res) => {
     res.json({
         message: 'Target Server Running',
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     })
 })
 
-// 用户列表
+// User list
 app.get('/users', (req, res) => {
     res.json({
         code: 0,
@@ -40,7 +40,7 @@ app.get('/users', (req, res) => {
     })
 })
 
-// 获取单个用户
+// Get single user
 app.get('/users/:id', (req, res) => {
     const { id } = req.params
     res.json({
@@ -49,7 +49,7 @@ app.get('/users/:id', (req, res) => {
     })
 })
 
-// 创建用户
+// Create user
 app.post('/users', (req, res) => {
     const { name, email } = req.body
     res.json({
@@ -59,7 +59,7 @@ app.post('/users', (req, res) => {
     })
 })
 
-// 获取请求头信息
+// Get request headers info
 app.get('/headers', (req, res) => {
     res.json({
         code: 0,
@@ -73,7 +73,7 @@ app.get('/headers', (req, res) => {
     })
 })
 
-// 延迟响应（测试超时）
+// Delayed response (test timeout)
 app.get('/slow', (req, res) => {
     const delay = Number(req.query.delay) || 2000
     setTimeout(() => {
@@ -85,7 +85,7 @@ app.get('/slow', (req, res) => {
     }, delay)
 })
 
-// 错误响应
+// Error response
 app.get('/error', (req, res) => {
     res.status(500).json({
         code: 500,
@@ -93,7 +93,7 @@ app.get('/error', (req, res) => {
     })
 })
 
-// 文件上传模拟
+// File upload simulation
 app.post('/upload', (req, res) => {
     res.json({
         code: 0,
@@ -103,7 +103,7 @@ app.post('/upload', (req, res) => {
     })
 })
 
-// WebSocket 信息
+// WebSocket info
 app.get('/ws-info', (req, res) => {
     res.json({
         code: 0,
@@ -113,7 +113,7 @@ app.get('/ws-info', (req, res) => {
 
 const PORT = 4000
 app.listen(PORT, () => {
-    console.log(`🎯 Target server running at http://localhost:${PORT}`)
+    console.log(`Target server running at http://localhost:${PORT}`)
     console.log('\nAvailable endpoints:')
     console.log('  GET  /              - Server info')
     console.log('  GET  /users         - Get all users')

@@ -3,11 +3,11 @@
 module.exports = app => {
     const { router, controller } = app
 
-    // 首页 - 显示代理信息
+    // Home page - show proxy info
     router.get('/', controller.home.index)
 
-    // 健康检查
+    // Health check
     router.get('/health', controller.home.health)
 
-    // 其他路由由 httpProxyPlus 中间件处理
+    // Other routes handled by httpProxyPlus middleware
 }

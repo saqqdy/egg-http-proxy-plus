@@ -1,126 +1,132 @@
 # egg-http-proxy-plus
 
-[English](#english) | [中文](#中文)
-
----
-
-<a name="中文"></a>
-
-## 中文
-
-功能强大的 Egg.js HTTP 代理中间件插件。支持转发文件上传接口、自定义匹配方法、ctx 透传、TypeScript 类型支持。
-
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
 [![License][license-image]][license-url]
 [![Node.js Version][node-image]][node-url]
+[![CI](https://github.com/saqqdy/egg-http-proxy-plus/workflows/Node.js%20CI/badge.svg)](https://github.com/saqqdy/egg-http-proxy-plus/actions)
 
-基于 [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware) 构建。
+> A powerful HTTP proxy middleware plugin for Egg.js with TypeScript support
 
-## 特性
+**中文文档** | [English](#english)
 
-- ✅ 支持文件上传代理
-- ✅ 支持自定义路径匹配函数
-- ✅ ctx 上下文透传到回调函数
-- ✅ TypeScript 类型定义
-- ✅ 支持WebSocket 代理
-- ✅ 支持路径重写
-- ✅ 支持请求/响应修改
+Built on top of [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware).
 
-## 环境要求
+**[📝 Changelog](CHANGELOG.md)** | **[📦 Examples](examples/proxy-demo/)** | **[🐛 Issues](https://github.com/saqqdy/egg-http-proxy-plus/issues)**
 
-- Node.js >= 14.0.0
-- Egg.js >= 3.0.0
+---
 
-## 安装
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| 📁 File Upload | Built-in multipart/form-data support |
+| 🔧 Custom Matching | Function-based path matching |
+| 🔄 ctx Passing | Access Egg.js context in callbacks |
+| 📘 TypeScript | Built-in type definitions |
+| 🔌 WebSocket | WS proxy support |
+| ✏️ Path Rewrite | Flexible rewrite rules |
+| 🛡️ Error Handling | Custom error callbacks |
+
+## Requirements
+
+| Dependency | Version |
+|------------|---------|
+| Node.js | >= 14.0.0 |
+| Egg.js | >= 3.0.0 |
+
+## Installation
 
 ```bash
-# npm
-npm i egg-http-proxy-plus --save
-
-# yarn
-yarn add egg-http-proxy-plus
-
-# pnpm
+npm i egg-http-proxy-plus
+# or
 pnpm add egg-http-proxy-plus
+# or
+yarn add egg-http-proxy-plus
 ```
 
-## 使用方法
+## Quick Start
 
-### 启用插件
+### 1. Enable Plugin
 
 ```js
-// {app_root}/config/plugin.js
+// config/plugin.js
 exports.httpProxyPlus = {
     enable: true,
     package: 'egg-http-proxy-plus'
 }
 ```
 
-## 配置示例
-
-### 基础配置
+### 2. Configure Proxy
 
 ```js
-// {app_root}/config/config.default.js
+// config/config.default.js
 exports.httpProxyPlus = {
-    '/api': 'http://www.example.org'
+    '/api': 'http://backend.example.com'
 }
 ```
 
-请求 `/api/users` 将被代理到 `http://www.example.org/api/users`
+### 3. Test
 
-### 路径重写
+```bash
+curl http://localhost:7001/api/users
+# Proxies to http://backend.example.com/api/users
+```
+
+## Configuration Examples
+
+### Basic
+
+```js
+// Object form
+exports.httpProxyPlus = {
+    '/api': 'http://backend.example.com',
+    '/v1': {
+        target: 'http://backend.example.com',
+        pathRewrite: { '^/v1': '/api/v1' }
+    }
+}
+
+// Array form
+exports.httpProxyPlus = [
+    { origin: '/api', options: 'http://backend.example.com' },
+    { origin: '/v1', options: { target: 'http://backend.example.com' } }
+]
+```
+
+### Path Rewrite
 
 ```js
 exports.httpProxyPlus = {
     '/api': {
-        target: 'http://www.example.org',
-        pathRewrite: { '^/api': '' }
+        target: 'http://backend.example.com',
+        pathRewrite: { '^/api': '' }  // Remove /api prefix
     }
 }
+// /api/users -> http://backend.example.com/users
 ```
 
-请求 `/api/users` 将被代理到 `http://www.example.org/users`
-
-### 数组配置方式
+### Custom Matching
 
 ```js
 exports.httpProxyPlus = [
     {
-        origin: '/api',
-        options: {
-            target: 'http://www.example.org',
-            pathRewrite: { '^/api': '' }
-        }
-    }
-]
-```
-
-### 自定义匹配函数
-
-```js
-exports.httpProxyPlus = [
-    {
-        // 仅匹配 GET 请求
+        // Match GET requests only
         origin(pathname, req) {
-            return pathname.match('^/api') && req.method === 'GET'
+            return pathname.startsWith('/api') && req.method === 'GET'
         },
-        options: {
-            target: 'http://www.example.org'
-        }
+        options: { target: 'http://backend.example.com' }
     }
 ]
 ```
 
-### 请求拦截 - 添加认证头
+### Add Auth Header
 
 ```js
 exports.httpProxyPlus = {
     '/api': {
-        target: 'http://www.example.org',
+        target: 'http://backend.example.com',
         onProxyReq(proxyReq, req, res, ctx) {
-            // ctx 上下文透传，可访问 cookies、session 等
             const token = ctx.cookies.get('access_token')
             if (token) {
                 proxyReq.setHeader('Authorization', `Bearer ${token}`)
@@ -130,32 +136,26 @@ exports.httpProxyPlus = {
 }
 ```
 
-### 响应修改
+### Response Modification
 
 ```js
 exports.httpProxyPlus = {
     '/api': {
-        target: 'http://www.example.org',
+        target: 'http://backend.example.com',
         onProxyRes(proxyRes, req, res, ctx) {
-            // 添加自定义响应头
             proxyRes.headers['x-proxy-by'] = 'egg-http-proxy-plus'
-            // 可根据 ctx 做条件处理
-            if (ctx.state.user) {
-                proxyRes.headers['x-user-id'] = ctx.state.user.id
-            }
         }
     }
 }
 ```
 
-### 错误处理
+### Error Handling
 
 ```js
 exports.httpProxyPlus = {
     '/api': {
-        target: 'http://www.example.org',
+        target: 'http://backend.example.com',
         onError(err, req, res) {
-            console.error('Proxy error:', err)
             res.writeHead(502, { 'Content-Type': 'application/json' })
             res.end(JSON.stringify({
                 code: 502,
@@ -167,18 +167,18 @@ exports.httpProxyPlus = {
 }
 ```
 
-### WebSocket 代理
+### WebSocket Proxy
 
 ```js
 exports.httpProxyPlus = {
     '/ws': {
-        target: 'ws://www.example.org',
-        ws: true// 启用 WebSocket 代理
+        target: 'ws://backend.example.com',
+        ws: true
     }
 }
 ```
 
-### 多目标代理
+### Multiple Services
 
 ```js
 exports.httpProxyPlus = {
@@ -188,22 +188,45 @@ exports.httpProxyPlus = {
 }
 ```
 
-## TypeScript 支持
+## API Reference
 
-插件内置 TypeScript 类型定义：
+### ProxyConfigItem
+
+| Property | Type | Required | Description |
+|----------|------|:--------:|-------------|
+| `origin` | `string \| string[] \| Function` | ✓ | Path pattern to match |
+| `options` | `string \| ExtendedProxyOptions` | ✓ | Proxy options or target URL |
+
+### ExtendedProxyOptions
+
+| Property | Type | Required | Description |
+|----------|------|:--------:|-------------|
+| `target` | `string` | ✓ | Target URL |
+| `pathRewrite` | `object` | | Path rewrite rules |
+| `changeOrigin` | `boolean` | | Change origin header (default: false) |
+| `onProxyReq` | `Function` | | Request callback (4th arg: ctx) |
+| `onProxyRes` | `Function` | | Response callback (4th arg: ctx) |
+| `onError` | `Function` | | Error callback |
+| `ws` | `boolean` | | WebSocket proxy (default: false) |
+| `proxyTimeout` | `number` | | Timeout in milliseconds |
+
+For more options, see [http-proxy-middleware docs](https://github.com/chimurai/http-proxy-middleware#options).
+
+## TypeScript
+
+Built-in type definitions:
 
 ```ts
-// {app_root}/config/config.default.ts
+// config/config.default.ts
 import { EggAppConfig } from 'egg'
 
 export default () => {
     const config: EggAppConfig = {}
     config.httpProxyPlus = {
         '/api': {
-            target: 'http://www.example.org',
+            target: 'http://backend.example.com',
             pathRewrite: { '^/api': '' },
             onProxyReq(proxyReq, req, res, ctx) {
-                // 完整的类型提示
                 const token = ctx.cookies.get('token')
                 token && proxyReq.setHeader('Authorization', token)
             }
@@ -213,215 +236,54 @@ export default () => {
 }
 ```
 
-## API 参考
+## FAQ
 
-### ProxyConfigItem
+<details>
+<summary><b>How to proxy file uploads?</b></summary>
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `origin` | `string \| string[] \| Function` | 路径匹配模式 |
-| `options` | `string \| ExtendedProxyOptions` | 代理配置或目标 URL |
+Built-in support, no extra configuration needed.
+</details>
 
-### ExtendedProxyOptions
+<details>
+<summary><b>How are POST request bodies handled?</b></summary>
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `target` | `string` | 代理目标地址 |
-| `pathRewrite` | `object` | 路径重写规则 |
-| `changeOrigin` | `boolean` | 是否修改请求头的 origin |
-| `onProxyReq` | `Function` | 代理请求回调，第四个参数为 ctx |
-| `onProxyRes` | `Function` | 代理响应回调，第四个参数为 ctx |
-| `onError` | `Function` | 错误回调 |
-| `ws` | `boolean` | 是否启用 WebSocket 代理 |
+The plugin automatically handles `rawBody` for proper forwarding.
+</details>
 
-更多配置选项请参考 [http-proxy-middleware 文档](https://github.com/chimurai/http-proxy-middleware#options)。
-
-## 常见问题
-
-### 如何代理文件上传？
-
-插件已内置处理文件上传的支持，无需额外配置。
-
-### 如何处理 POST 请求体？
-
-插件会自动处理 `rawBody`，确保 POST/PUT 请求体正确转发。
-
-### 如何调试代理请求？
+<details>
+<summary><b>How to debug proxy requests?</b></summary>
 
 ```js
-exports.httpProxyPlus = {
-    '/api': {
-        target: 'http://www.example.org',
-        onProxyReq(proxyReq, req, res, ctx) {
-            console.log('[Proxy]', req.method, req.url, '->', proxyReq.path)
-        },
-        onProxyRes(proxyRes, req, res) {
-            console.log('[Proxy Response]', proxyRes.statusCode)
-        }
-    }
+onProxyReq(proxyReq, req, res, ctx) {
+    console.log('[Proxy]', req.method, req.url, '->', proxyReq.path)
+}
+onProxyRes(proxyRes, req, res) {
+    console.log('[Response]', proxyRes.statusCode)
 }
 ```
+</details>
 
-## 问题反馈
+<details>
+<summary><b>How to skip certain requests?</b></summary>
 
-请到 [GitHub Issues](https://github.com/saqqdy/egg-http-proxy-plus/issues) 提交问题或建议。
+Return `false` in custom matching function:
+```js
+origin(pathname, req) {
+    if (pathname === '/health') return false
+    return pathname.startsWith('/api')
+}
+```
+</details>
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
 [MIT](LICENSE)
 
 ---
-
-<a name="english"></a>
-
-## English
-
-A powerful HTTP proxy middleware plugin for Egg.js. Supports file upload proxying, custom matching methods, ctx context passing, and TypeScript type definitions.
-
-[![NPM version][npm-image]][npm-url]
-[![npm download][download-image]][download-url]
-[![License][license-image]][license-url]
-
-Built on top of [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware).
-
-## Features
-
-- ✅ File upload proxy support
-- ✅ Custom path matching functions
-- ✅ ctx context passed to callbacks
-- ✅ TypeScript type definitions
-- ✅ WebSocket proxy support
-- ✅ Path rewrite support
-- ✅ Request/response modification
-
-## Requirements
-
-- Node.js >= 14.0.0
-- Egg.js >= 3.0.0
-
-## Installation
-
-```bash
-# npm
-npm i egg-http-proxy-plus --save
-
-# yarn
-yarn add egg-http-proxy-plus
-
-# pnpm
-pnpm add egg-http-proxy-plus
-```
-
-## Usage
-
-### Enable Plugin
-
-```js
-// {app_root}/config/plugin.js
-exports.httpProxyPlus = {
-    enable: true,
-    package: 'egg-http-proxy-plus'
-}
-```
-
-## Configuration Examples
-
-### Basic Configuration
-
-```js
-// {app_root}/config/config.default.js
-exports.httpProxyPlus = {
-    '/api': 'http://www.example.org'
-}
-```
-
-A request to `/api/users` will proxy to `http://www.example.org/api/users`
-
-### Path Rewrite
-
-```js
-exports.httpProxyPlus = {
-    '/api': {
-        target: 'http://www.example.org',
-        pathRewrite: { '^/api': '' }
-    }
-}
-```
-
-A request to `/api/users` will proxy to `http://www.example.org/users`
-
-### Custom Matching Function
-
-```js
-exports.httpProxyPlus = [
-    {
-        origin(pathname, req) {
-            return pathname.match('^/api') && req.method === 'GET'
-        },
-        options: {
-            target: 'http://www.example.org'
-        }
-    }
-]
-```
-
-### Request Interception - Add Auth Header
-
-```js
-exports.httpProxyPlus = {
-    '/api': {
-        target: 'http://www.example.org',
-        onProxyReq(proxyReq, req, res, ctx) {
-            const token = ctx.cookies.get('access_token')
-            if (token) {
-                proxyReq.setHeader('Authorization', `Bearer ${token}`)
-            }
-        }
-    }
-}
-```
-
-### WebSocket Proxy
-
-```js
-exports.httpProxyPlus = {
-    '/ws': {
-        target: 'ws://www.example.org',
-        ws: true
-    }
-}
-```
-
-## API Reference
-
-### ProxyConfigItem
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `origin` | `string \| string[] \| Function` | Path pattern to match |
-| `options` | `string \| ExtendedProxyOptions` | Proxy options or target URL |
-
-### ExtendedProxyOptions
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `target` | `string` | Target URL to proxy to |
-| `pathRewrite` | `object` | Path rewrite rules |
-| `changeOrigin` | `boolean` | Change origin header |
-| `onProxyReq` | `Function` | Proxy request callback with ctx |
-| `onProxyRes` | `Function` | Proxy response callback with ctx |
-| `onError` | `Function` | Error callback |
-| `ws` | `boolean` | Enable WebSocket proxy |
-
-For more options, see [http-proxy-middleware documentation](https://github.com/chimurai/http-proxy-middleware#options).
-
-## Questions & Suggestions
-
-Please open an issue [here](https://github.com/saqqdy/egg-http-proxy-plus/issues).
-
-## License
-
-[MIT](LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/egg-http-proxy-plus.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-http-proxy-plus
@@ -430,4 +292,3 @@ Please open an issue [here](https://github.com/saqqdy/egg-http-proxy-plus/issues
 [license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
 [license-url]: LICENSE
 [node-image]: https://img.shields.io/node/v/egg-http-proxy-plus.svg?style=flat-square
-[node-url]: https://nodejs.org/en/

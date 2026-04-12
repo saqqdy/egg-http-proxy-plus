@@ -3,51 +3,51 @@
 exports.keys = 'proxy-demo-secret-keys-123456'
 
 /**
- * httpProxyPlus 配置示例
+ * httpProxyPlus configuration examples
  *
- * 配置说明：
- * - 对象形式: { '/path': 'target' 或 { target: '...', ...options } }
- * - 数组形式: [{ origin: '/path', options: '...' 或 {...} }]
+ * Configuration styles:
+ * - Object style: { '/path': 'target' or { target: '...', ...options } }
+ * - Array style: [{ origin: '/path', options: '...' or {...} }]
  */
 exports.httpProxyPlus = {
-    // 基础代理 - 直接转发到目标服务器
+    // Basic proxy - direct forwarding to target server
     '/api/users': {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api': '' },
         changeOrigin: true
     },
 
-    // 请求拦截 - 添加认证头
+    // Request interception - add auth header
     '/api/auth': {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api/auth': '' },
         changeOrigin: true,
         onProxyReq(proxyReq, req, res, ctx) {
-            // 从 cookie 或 header 获取 token
+            // Get token from cookie or header
             const token = ctx.cookies.get('access_token') || ctx.get('authorization')
             if (token) {
                 proxyReq.setHeader('Authorization', `Bearer ${token}`)
                 console.log('[Proxy] Added Authorization header')
             }
-            // 添加自定义头
+            // Add custom header
             proxyReq.setHeader('X-Proxy-By', 'egg-http-proxy-plus')
         }
     },
 
-    // 响应修改
+    // Response modification
     '/api/headers': {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api': '' },
         changeOrigin: true,
         onProxyRes(proxyRes, req, res, ctx) {
-            // 添加响应头
+            // Add response headers
             proxyRes.headers['x-proxy-server'] = 'egg-http-proxy-plus'
             proxyRes.headers['x-proxy-time'] = Date.now()
             console.log('[Proxy] Response status:', proxyRes.statusCode)
         }
     },
 
-    // 错误处理
+    // Error handling
     '/api/error': {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api': '' },
@@ -63,15 +63,15 @@ exports.httpProxyPlus = {
         }
     },
 
-    // 超时设置
+    // Timeout settings
     '/api/slow': {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api': '' },
         changeOrigin: true,
-        proxyTimeout: 5000 // 5秒超时
+        proxyTimeout: 5000 // 5 seconds timeout
     },
 
-    // 文件上传
+    // File upload
     '/api/upload': {
         target: 'http://localhost:4000',
         pathRewrite: { '^/api': '' },
@@ -79,14 +79,14 @@ exports.httpProxyPlus = {
     }
 }
 
-// 安全配置
+// Security config
 exports.security = {
     csrf: {
-        enable: false // 测试环境关闭 CSRF
+        enable: false // Disable CSRF for test environment
     }
 }
 
-// 日志配置
+// Logger config
 exports.logger = {
     level: 'INFO',
     consoleLevel: 'DEBUG'
