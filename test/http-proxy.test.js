@@ -1,5 +1,3 @@
-'use strict'
-
 const mock = require('egg-mock')
 const express = require('express')
 

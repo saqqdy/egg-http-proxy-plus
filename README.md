@@ -1,3 +1,5 @@
+<div style="text-align: center;" align="center">
+
 # egg-http-proxy-plus
 
 [![NPM version][npm-image]][npm-url]
@@ -52,8 +54,8 @@ yarn add egg-http-proxy-plus
 ```js
 // config/plugin.js
 exports.httpProxyPlus = {
-    enable: true,
-    package: 'egg-http-proxy-plus'
+  enable: true,
+  package: 'egg-http-proxy-plus'
 }
 ```
 
@@ -133,6 +135,7 @@ exports.httpProxyPlus = {
             }
         }
     }
+  }
 }
 ```
 
